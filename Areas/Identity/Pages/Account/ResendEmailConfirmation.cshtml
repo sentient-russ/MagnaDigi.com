@@ -1,0 +1,48 @@
+﻿@page
+@model ResendEmailConfirmationModel
+@{
+    ViewData["Title"] = "Resend Confirmation";
+}
+<div class="content-block-center">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+<div class="flexbox-container center">
+    <div class="dialog-box-container">
+        <form id="account" method="post" class="form-login">
+            <br />
+            <center><img src="~/favicon.ico" height="125px" /></center>
+            <center><p><h2>@ViewData["Title"]</h2></p></center>
+            <br />
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" id="Input.Email" aria-required="true" class="form-control" placeholder="Email" required/>
+                <label asp-for="Input.Email"></label>
+                <div class="flexbox-container-alert">
+                    <span asp-validation-for="Input.Email" class="alert-color"></span>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <div class="form-button-container">
+                    <button type="submit" class="form-button">Resend</button>
+                </div>
+            </div>
+            <br />
+        </form>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

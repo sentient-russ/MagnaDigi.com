@@ -1,0 +1,33 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out confirmation";
+}
+<br /><br /><br />
+<div class="flexbox-container center">
+        <div class="flexbox-container" >
+            <div class="flexbox-item-contact-center">
+                <h1 class="center">@ViewData["Title"]</h1><br />
+            </div>
+        </div>
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                <div class="flexbox-container">
+                    <div class="row dialog-box-container">
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                            <div class="flexbox-item-contact">
+                                <div>
+                                <button type="submit" class="form-control form-button">Click here to Logout</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>You have successfully logged out of the application.</p>
+            }
+        }
+</div>

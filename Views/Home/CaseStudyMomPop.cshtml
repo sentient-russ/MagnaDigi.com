@@ -1,0 +1,199 @@
+﻿@model magnadigi.Controllers.ContactController
+@{
+    ViewData["Title"] = "magnadigi.com";
+}
+@*Place this GoogleAnalyticsScript on any non sensative, external page that requires analytics only!*@
+@section GoogleAnalyticsScript{
+    <!-- Google tag (gtag.js) which is only loaded outside of customer portal-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX92D67Z8T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-WX92D67Z8T');
+    </script>
+}
+<div class="vert-bar-wrapper">
+    <section4 >
+        <div class="flexbox-container-case-study ">
+
+                <div class="flexbox-container-case-study2">
+
+                    <span class="case-study-row">
+                    
+                            <div class="case-study-icon-box">
+                                <p class="case-study-icon-text">Case Study</p>
+                            </div>
+                            <div class="case-study-textbox">
+                            <p class="case-study-heading3">&nbsp - Mom and Pop's Pizzeria!</p>
+                            </div>
+                    </span>
+                    
+                    <div class="author-bar">
+                        <p class="author-bar-text">Author: Russell Steele</p>
+                        <p class="author-bar-text">Published: April 14th, 2023</p>
+                        <p class="author-bar-text">Read Time: 3 min.</p>
+                    </div>
+                    <div class="case-study-imagae-container">
+                        <center><img src="/img/case-study/pizza-shop-cover.png" class="case-study-imagae-container" /></center>
+                    </div>
+                    <p class="case-study-heading2" style="margin-bottom:-50px;">Project Summery</p>
+                    <p class="case-study-text">This application prototype was created as an order processing solution for the Mom and Pop's Pizzeria. The fictitious client has a single location and did not wish to include features for the kitchen, delivery, or pickup of customer orders except that the application be able to print order tickets and receipts. Additionally, the customer did not wish to develop a mobile app with this iteration though they did aim to implement one in the future. It was imperative that the app accurately represent their current menu and that the user interface was intuitive with large buttons which could be used on a kiosk touch screen. The system required the retention of customer account information and a section for reporting features to be used by the restaurant’s management.</p>
+                    <p class="case-study-text">All project tasks related to planning, design, development, testing, documentation, and presentation were completed within the required three-month timeline. All parties were impressed with the final product which met and exceeded all requirements listed in the requirements document.</p>
+                    <p class="case-study-text">At the time this article was written the application was fully functional as a prototype. An executable .jar file can be downloaded from the artifacts section below if desired. A readily available and current version of the Java runtime is required. Lastly, in addition to the other artifacts that are available, there is also a link to the GitHub repository.</p>
+
+                    <p class="case-study-text">
+                        <a href="/downloads/MomAndPopsPizzeria.zip" style="color:#636bfb; font-family:'Adobe Garamond Pro'">Program Zip File Download for Windows (72MB)</a><br />
+                        <a href="/pdf/mom-pop-requirements_doc.pdf" target="_blank" style="color:#636bfb; font-family:'Adobe Garamond Pro'">Requirements Documentation</a><br />
+                        <a asp-area="CaseStudyMomPopERDiagram" asp-controller="Home" asp-action="CaseStudyMomPopERDiagram" target="_blank" style="color:#636bfb; font-family:'Adobe Garamond Pro'">UML - Class Diagram</a><br />
+                     <a href="https://github.com/sentient-russ/MomPopsPizzeria" target="_blank" style="color:#636bfb; font-family:'Adobe Garamond Pro'">GitHub - Source Code</a>
+                    </p>
+                    <p class="case-study-heading2" >Customer Walk Through Video</p>
+                    <div class="iframe-container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/-Tfu58KQ5Ss?vq=hd1080&modestbranding=1&rel=0&iv_load_policy=3" width="560" height="315" title="Mom and Pop's Pizzeria!" frameborder="0" allowfullscreen>Video</iframe>
+                    </div>
+                    <br />
+                    <p class="case-study-heading2">Screen Shots</p>
+                </div>
+                <p class="case-study-heading1">Home Screen</p>
+                <div class="case-study-imagae-container2">
+                    <img src="/img/case-study/login.png.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Customer Registration</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/cust_registration.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Main Order Entry</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/main_order_menu.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Pizza Selection</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/pizza_order_menu.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Drink Selection</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/drink_order_menu.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Side Selection</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/side_order_menu.jpg" class="case-study-imagae-container2" />
+                </div>
+                 <p class="case-study-heading1">Updated Order Menu</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/main2_order_menu.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Customer Payment</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/cust_payment.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Employee / Manager  - Login</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/emp_login.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Employee / Manager - Payment</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/emp_payment.jpg" class="case-study-imagae-container2" />
+                </div>
+                <p class="case-study-heading1">Manager Dashboard</p>
+                <div class="case-study-imagae-container2">
+                <img src="/img/case-study/manager_options.jpg" class="case-study-imagae-container2" />
+                </div>
+        </div>  
+    </section4>
+        <section5 class="flexbox-contact-page-container">
+            <div class="flexbox-container center">
+                <div class="dialog-box-container">
+                    @*Start new form here.*@
+                    <div class="flexbox-container">
+                        <form method="post" action="/Contact" enctype="multipart/form-data">
+                            <center><img src="/icon/device-message.svg" style="height:100px;justify-content:center;" /></center>
+                            <center><h1>Contact</h1></center>
+                            <div class="form-floating mb-3">
+                                <p><div asp-validation-summary="ModelOnly" class="alert-color hidden"></div></p>
+                                <input asp-for="Name" id="Name" class="form-control" placeholder="First/Last Name" required />
+                                <label asp-for="Name">Name</label>
+                                <span asp-validation-for="Name" class="alert-color"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Business" class="form-control" id="Business" placeholder="Company Name" required />
+                                <label asp-for="Business"></label>
+                                <span asp-validation-for="Business" class="alert-color"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Phone" id="Phone" name="Phone" placeholder="(XXX) XXX-XXXX" class="form-control" required />
+                                <label asp-for="Phone"></label>
+                                <span asp-validation-for="Phone" class="alert-color"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Email" id="Email" class="form-control" placeholder="example@somewhere.com" required />
+                                <label asp-for="Email"></label>
+                                <span asp-validation-for="Email" class="alert-color"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea asp-for="Message" id="Message" class="form-control" style="height: 100px" placeholder="Message" required></textarea>
+                                <label asp-for="Message"></label>
+                                <span asp-validation-for="Message" class="alert-color"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <p><span asp-validation-for="startDate" class="alert-color"></span></p>
+                                <input asp-for="startDate" class="form-control" id="startDate" />
+                                <label asp-for="startDate"></label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-control" asp-for="priorityLevel" name="priorityLevel" id="priorityLevel">
+                                    <option>High</option>
+                                    <option>Medium</option>
+                                    <option>Low</option>
+                                </select>
+                                <label asp-for="priorityLevel"></label>
+                                <p><span asp-validation-for="priorityLevel" class="alert-color"></span></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <center><button type="submit" class="form-button">Send</button></center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br /><br /><br /><br /><br />
+        </section5>
+    <section5 class="flexbox-bottom-row-case-study">
+        <p id="magnadigi-text" class="magnadigi-text">magnadigi</p>
+        <div class="container-lower">
+            <a asp-area="CaseStudyMomPop" asp-controller="Home" asp-action="CaseStudyMomPop">
+                <div class="showcase-box1">
+                    <center>
+                        <img class="showcase-image" src="/img/mom_pop.png" /><b><p>Case Study - Kiosk App</p></b>
+                    </center>
+                    <div class="showcase-inner-box">
+                        <p class="showcase-inner-paragraph">Touchscrean app development for Mom and Pop's Pizzeria</p>
+                    </div>
+                </div>
+            </a>
+            <div class="showcase-box2">
+                <center>
+                    <img class="showcase-image" src="/img/sv.png" /><b><p>Case Study - ERP</p></b>
+                </center>
+                <div class="showcase-inner-box">
+                    <p class="showcase-inner-paragraph">Cloud enterprise resource planning customization</p>
+                </div>
+            </div>
+            <div class="showcase-box3">
+                <center>
+                    <img class="showcase-image" src="/img/md.png" /><b><p>Case Study - Web App</p></b>
+                </center>
+                <div class="showcase-inner-box">
+                    <p class="showcase-inner-paragraph">.NET web app front- and back-end design which is connected to ERPNEXT.</p>
+                </div>
+            </div>
+         </div>
+    </section5>
+</div>
+
+@section Scripts {
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+

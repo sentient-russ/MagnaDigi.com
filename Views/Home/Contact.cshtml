@@ -1,0 +1,99 @@
+﻿@model magnadigi.Controllers.ContactController
+@{
+    ViewData["Title"] = "Contact - magnadigi";
+}
+@section GoogleAnalyticsScript{
+    <!-- Google tag (gtag.js) which is only loaded outside of customer portal-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX92D67Z8T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WX92D67Z8T');
+    </script>
+}
+    <header3>
+            <div class="flexbox-container-contact">
+                <div class="row">
+                    <div class="hidden">
+                    <center><img class="banner-icon" src="/icon/device-message.svg" /></center>
+                        <center><h2>Connect with us.</h2></center>
+                        
+                        <br />
+                    <p style="text-align: justify;">
+                            We are here to do the heavy lifting.
+                            Our process is set in motion with one or more progressive discovery discussions
+                            where you will gain a deeper understanding of the project’s scope and resources
+                            necessary to see it through. To ensure that no time is lost, we will begin capturing
+                            and documenting the key information that is vital to your success without delay.
+                    </p>
+                    <p style="text-align: center;">376 Powder Springs St #141<br />
+                    Marietta, GA 30064<br />
+                    (404) 322-7517</p>
+                    </div>
+                </div>
+            </div>
+    </header3>
+    <section class="flexbox-contact-page-container">
+        <div class="flexbox-container center">
+            <div class="dialog-box-container">
+                @*Start new form here.*@
+                <div class="flexbox-container">
+                    <form method="post" action="/Contact" enctype="multipart/form-data">
+                        <center><img src="/icon/device-message.svg" style="height:100px;justify-content:center;" /></center>
+                        <center><h1>Contact</h1></center>
+                        <div class="form-floating mb-3">
+                            <p><div asp-validation-summary="ModelOnly" class="alert-color hidden"></div></p>
+                            <input asp-for="Name" id="Name" class="form-control" placeholder="First/Last Name" required />
+                            <label asp-for="Name">Name</label>
+                            <span asp-validation-for="Name" class="alert-color"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Business" class="form-control" id="Business" placeholder="Company Name" required />
+                            <label asp-for="Business"></label>
+                            <span asp-validation-for="Business" class="alert-color"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Phone" id="Phone" name="Phone" placeholder="(XXX) XXX-XXXX" class="form-control" required />
+                            <label asp-for="Phone"></label>
+                            <span asp-validation-for="Phone" class="alert-color"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Email" id="Email" class="form-control" placeholder="example@somewhere.com" required />
+                            <label asp-for="Email"></label>
+                            <span asp-validation-for="Email" class="alert-color"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Message" id="Message" class="form-control" style="height: 100px" placeholder="Message" required></textarea>
+                            <label asp-for="Message"></label>
+                            <span asp-validation-for="Message" class="alert-color"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <p><span asp-validation-for="startDate" class="alert-color"></span></p>
+                            <input asp-for="startDate" class="form-control" id="startDate"/>
+                            <label asp-for="startDate"></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-control" asp-for="priorityLevel" name="priorityLevel" id="priorityLevel">
+                                <option>High</option>
+                                <option>Medium</option>
+                                <option>Low</option>
+                            </select>
+                            <label asp-for="priorityLevel"></label>
+                            <p><span asp-validation-for="priorityLevel" class="alert-color"></span></p>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <center><button type="submit" class="form-button">Send</button></center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br />
+    </section>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

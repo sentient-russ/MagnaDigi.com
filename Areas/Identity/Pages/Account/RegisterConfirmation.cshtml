@@ -1,0 +1,49 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Registration confirmation";
+}
+<br /><br /><br />
+<div class="flexbox-container center">
+    <div class="flexbox-container">
+        <div class="flexbox-item-contact-center">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+    @{
+        if (@Model.DisplayConfirmAccountLink)
+        {
+            <div class="flexbox-container">
+                <div class="row dialog-box-container">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                        <div class="flexbox-item-contact">
+                            <p>
+                                This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+                                Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="flexbox-container">
+                <div class="row dialog-box-container">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                        <div class="flexbox-item-contact">
+                            <p>Congratulations, your account has been created! Email confirmation is required before you can login.</p>
+                            <p> </p>
+                            <p>Please check your email inbox and junk folder, if necessary, to confirm your account.</p>
+                            <br /><br /><br />
+                            <div>
+                                <button type="submit" class="form-control form-button">Return to Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+</div>
+

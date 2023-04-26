@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+@section GoogleAnalyticsScript{
+    <!-- Google tag (gtag.js) which is only loaded outside of customer portal-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX92D67Z8T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WX92D67Z8T');
+    </script>
+}
+    <center><h1>@ViewData["Title"]</h1></center>
+    <div class="flexbox-container-privacy">
+        <div class="flexbox-row">
+            <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 80%;">Information that is provided to us is held in confidence and we go to extreme lengths to keep it safe and secure.  NDA's are handled upfront on a case by case basis.  It is understood that these are especially important when it comes to new innovations. In short what is yours will remain yours. </p>
+
+            <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 80%;">If questions about privacy remain, a member of our management team will be glad to provide clarification.</p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+
