@@ -2,10 +2,10 @@
 @{
     ViewData["Title"] = "Edit Task";
 }
-<div class="flexbox-container center">
+<div class="edit-flexbox-container">
     <h1>@ViewData["Title"]</h1>
-    <div class="row text-field dialog-box-container">
-        <form asp-action="EditTask">
+    <div class="row text-field dialog-box-container-edit">
+        <form asp-action="EditTask" class="edit-form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TaskRef" />
             <input type="hidden" asp-for="Project" />
@@ -16,47 +16,49 @@
             <input type="hidden" asp-for="PriorStatus" />
             <input type="hidden" asp-for="CompletedOn" />
             <div class="form-group">
-                <label asp-for="TaskRef" class="control-label"></label>
-                <input asp-for="TaskRef" class="form-control" disabled/>
+                <label asp-for="TaskRef" class="control-label" style="margin-left: 9px;font-weight:600;"></label>
+                <input asp-for="TaskRef" class="form-control" style="opacity:.5;" disabled />
                 <span asp-validation-for="TaskRef" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Project" class="control-label"></label>
-                <input asp-for="Project" class="form-control" disabled/>
+                <label asp-for="Project" class="control-label" style="margin-left: 9px;font-weight:600;"></label>
+                <input asp-for="Project" class="form-control" style="opacity:.5;" disabled />
                 <span asp-validation-for="Project" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" disabled/>
+                <label asp-for="Email" class="control-label" style="margin-left: 9px;font-weight:600;"></label>
+                <input asp-for="Email" class="form-control" style="opacity:.5;" disabled />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-editdetails-control">
                 <h2>Details History</h2>
+            </div>
+            <div class="form-editdetails-control">
                 @Html.Raw(Model.DetailsString)
             </div>         
             <div class="form-group">
-                <label asp-for="Details" class="control-label"></label>
-                <textarea asp-for="Details" class="form-control" rows="10"></textarea>
+                <label asp-for="Details" class="control-label" style="margin-left: 9px;font-weight:600;"></label>
+                <textarea asp-for="Details" class="form-control" style="background-color: #e5e5e5;" rows="10"></textarea>
                 <span asp-validation-for="Details" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StartDateTime" class="control-label"></label>
-                <input asp-for="StartDateTime" class="form-control" disabled/>
+                <label asp-for="StartDateTime" class="control-label" style="margin-left: 9px;font-weight:600;"></label>
+                <input asp-for="StartDateTime" class="form-control" style="opacity:.5;" disabled />
                 <span asp-validation-for="StartDateTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ExpEndDate" class="control-label"></label>
-                <input asp-for="ExpEndDate" class="form-control" disabled/>
+                <label asp-for="ExpEndDate" class="control-label" style="margin-left: 9px;font-weight:600;"></label>
+                <input asp-for="ExpEndDate" class="form-control" style="opacity:.5;" disabled />
                 <span asp-validation-for="ExpEndDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PriorityLevel" class="control-label"></label>
-                <input asp-for="PriorityLevel" class="form-control" disabled/>
+                <label asp-for="PriorityLevel" class="control-label" style="margin-left: 9px;font-weight:600;"></label>
+                <input asp-for="PriorityLevel" class="form-control" style="opacity:.5;" disabled />
                 <span asp-validation-for="PriorityLevel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <select class="form-control" asp-for="Status" name="Status">
+                <label asp-for="Status" class="control-label" style="margin-left: 9px;font-weight:600;"></label>
+                <select class="form-control" style="background-color: #e5e5e5;" asp-for="Status" name="Status">
                         <option>Open</option>
                         <option>Working</option>
                         <option>Pending Review</option>
@@ -70,10 +72,11 @@
         <div class="form-group">
             <input type="submit" value="Save" class="button-action-call" />
         </div>
-        <br />
-        <a asp-action="Index">Back to task list</a>
-        <br />
+        <div style="margin:10px;">
+                    <a asp-action="Index" >Back to task list</a>
+        </div>
         </center>
+        <br />
         </form>
         </code>
     </div>

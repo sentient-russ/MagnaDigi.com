@@ -1,0 +1,40 @@
+﻿@model magnadigi.Models.ViewModelBundle
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Identity
+@using System.Net
+@using magnadigi.Areas.Identity.Data
+@{
+	ViewData["Title"] = "Wedding Upload Confirmed";
+}
+<div class="background-wrapper">
+	<center>
+		<div class="row-tasktable">
+			<h2 class="heading">Success! Thank you!</h2>
+			<h2 class="heading">Click to upload another video or picture.</h2>
+			<div class="content-file-upload-table">
+				<form asp-action="WeddingUploadFile" enctype="multipart/form-data">
+					<div class="mb-3">
+						<label asp-for="FormFile" class="form-label" />
+						<input asp-for="FormFile" class="form-control form-control-file-upload" accept="*/*" required="" id="FormFile" name="FormFile" />
+						<span asp-validation-for="FormFile" class="text-danger"></span>
+					</div>
+
+
+					<div class="mb-3">
+						<button type="submit" class="btn btn-primary button-upload">Upload</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</center>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

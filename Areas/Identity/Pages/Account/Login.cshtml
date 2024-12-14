@@ -10,8 +10,7 @@
     <div class="dialog-box-container">
         <form id="account" method="post" class="form-login ">            
             <center><img src="~/favicon.ico" height="125px" /></center>
-            <center><p><h2>@ViewData["Title"]</h2></p></center>
-            <br />
+            <center><h2 style="margin-top:0px;">@ViewData["Title"]</h2></center>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" id="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Email" required />
                 <label asp-for="Input.Email"></label>
@@ -27,14 +26,6 @@
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <div>
-                    <label asp-for="Input.RememberMe" class="checkbox-label">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                    </label>
-                </div>
-            </div>
-            <div class="form-floating mb-3">
                 <div class="form-button-container">
                 <div asp-validation-summary="ModelOnly" class="form-text-danger"></div>
                 <button id="login-submit" type="submit" class="form-button">Log in</button>
@@ -46,6 +37,15 @@
                 <p><a class="flexbox-item-text" id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend Confirmation</a></p>
             </div>
         </form>
+
+    </div>
+    <div class="content-block-center" style="margin-top:0px;padding-top:0px;align-content:flex-start">
+    <p>To login with a demo account feel free to use the following credentials:</p>
+
+    <p><span class="case-study-text" style="font-size: 1.5rem;">Username:</span></p>
+        <p><span class="login-info-formatting" style="font-size: 1.5rem;">demo@magnadigi.com&nbsp</span></p>
+        <p><span class="case-study-text" style="font-size: 1.5rem;">Password:</span></p>
+        <p><span class="login-info-formatting" style="font-size: 1.5rem;">>Success1@Magnadigi</span></p>
     </div>
 </div>
 <br />

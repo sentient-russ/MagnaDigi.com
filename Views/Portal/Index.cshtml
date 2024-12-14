@@ -6,11 +6,12 @@
 @{
     ViewData["Title"] = "Portal magnadigi";
 }
+<div class="background-wrapper">
 <center>
 	<div class="flexbox-container-contact">
 		<div class="row-tasktable">
 			<h3>Good day, @ViewData["fname"]  @ViewData["lname"]</h3>
-			<p>Here is your task list.</p>
+				<h2 class="heading">Assigned Tasks</h2>
 			<code>
 			<table class="content-table">
             <thead>
@@ -51,58 +52,120 @@
                 </tr>
         }
         </tbody>
-                    
         </table>
         </code>
 		<div class="flexbox-container-contact">
-					<div class="row-gantt">
-						<div class="content-gant-table">
-							<h2 class="heading">Gantt Chart</h2>
-							<div class="card" style="overflow: scroll">
-								<svg id="gantt"></svg>
-							</div>
-							<div class="mx-auto mt-3 btn-group" role="group">
-								<button type="button" class="btn btn-sm btn-light">Quarter Day</button>
-								<button type="button" class="btn btn-sm btn-light">Half Day</button>
-								<button type="button" class="btn btn-sm btn-light active">Day</button>
-								<button type="button" class="btn btn-sm btn-light">Week</button>
-								<button type="button" class="btn btn-sm btn-light">Month</button>
-							</div>
-						</div>
+			<div class="row-gantt">
+					<h2 class="heading">Gantt Chart</h2>
+				<div class="content-gant-table">
+					<div class="card" style="overflow: scroll">
+						<svg id="gantt"></svg>
+					</div>
+					<div class="mx-auto mt-3 btn-group" role="group">
+							<button class="btn btn-sm btn-light" type="button">Quarter Day</button>
+							<button class="btn btn-sm btn-light" type="button">Half Day</button>
+							<button class="btn btn-sm btn-light" type="button">Day</button>
+							<button class="btn btn-sm btn-light active" type="button">Week</button>
+							<button class="btn btn-sm btn-light" type="button">Month</button>
 					</div>
 				</div>
-        <div class="flexbox-container">
+			</div>
+		</div>
+			<div class="flexbox-container-contact">
+				<div class="row-gantt">
+		<h2 class="heading">Files Uploaded</h2>
+		<code>
+			<table class="content-table content-upload-table">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.FilesUploadedModel.UploadedDate)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.FilesUploadedModel.FileName)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.FilesUploadedModel.ProjectId)
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var items in Model.FilesUploaded)
+					{
+						<tr>
+							<td class="medgrey-text">
+								@Html.DisplayFor(modelItem => items.UploadedDate)
+							</td>
+							<td class="leftjustify">
+								@Html.DisplayFor(modelItem => items.FileName)
+							</td>
+							<td class="medred-text">
+								@Html.DisplayFor(modelItem => items.ProjectId)
+							</td>
+							<td>
+								<a asp-action="DeleteFile" asp-controller="PortalController" name="FileId" asp-route-id="@items.FileId">Delete</a>
+							</td>
+						</tr>
+					}
+
+				</tbody>
+			</table>
+				</code>
+				</div>
+			</div>
+			
+			<div class="row-tasktable">
+				<h2 class="heading">Upload Files</h2>
+				<div class="content-file-upload-table">
+					<form asp-action="UploadFile" enctype="multipart/form-data">
+						<div class="mb-3">
+							<label asp-for="FormFile" class="form-label" />
+							<input asp-for="FormFile" class="form-control form-control-file-upload" accept="*/*" required="" id="FormFile" name="FormFile" />
+							<span asp-validation-for="FormFile" class="text-danger"></span>
+						</div>
+						<div class="mb-3">
+							@Html.DropDownList("Projects",
+							ViewBag.Projects,
+							"Select Project",
+							new {@class="form-control ", required = "Project selection required." })
+						</div>
+						<div class="mb-3">
+							<button type="submit" class="btn btn-primary button-upload">Upload</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		
+        <div class="flexbox-container ">
             <div class="flexbox-item-contact-center">
-                <center><h3>Log out user @ViewData["email"]?</h3></center>
+					<center><h3 class="logout-heading">Log out user @ViewData["email"]?</h3></center>
             </div>
         </div>
     </div>
 </div>
-
+</center>
+<center>
 @{
     if (User.Identity.IsAuthenticated)
     {
-		<div class="flexbox-container">
-						<div class="row">
-																		
-							<a href="/Identity/Account/Logout/">
-								<input type="button" class="button-action-call" value="Logout">
-							</a>
-
-						</div>
-		</div>
+				<div class="flexbox-container flexbox-container-bottom">
+					<div class="row">											
+						<a href="/Identity/Account/Logout/">
+							<input type="button" class="button-action-call" value="Logout">
+						</a>
+					</div>
+				</div>
     }
     else
     {
-			<p>You have successfully logged out of the application.</p>
+				<p>You have successfully logged out of the application.</p>
 	}
-
-	}
-	
+}
 </center>
+</div><!--end background wrapper-->
 <!--JSON.parse(ViewData["TasksJson"])-->
 <script>
-
 	var tasks = @Html.Raw(Model.JsonTasks);
 	var gantt_chart = new Gantt("#gantt", tasks, {
 
@@ -125,21 +188,12 @@
 					  <p>${task.progress}% completed!</p>
 					</div>
 				  `;
-		},
-
-		on_click: function (task) {
-		console.log(task);
-		},
-		on_date_change: function(task, start, end) {
-			console.log(task, start, end);
-		},
-		on_progress_change: function(task, progress) {
-			console.log(task, progress);
-		},
-		on_view_change: function(mode) {
-			console.log(mode);
 		}
+
+
+
 	});
+
 	gantt_chart.change_view_mode('Week');
 
 	$(function () {
@@ -151,9 +205,7 @@
 			$btn.addClass('active');
 		});
 	});
-
-
-
+			
 </script>
 <br />
 <br />

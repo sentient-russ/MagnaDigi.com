@@ -17,7 +17,7 @@
 <section3>
     <div class="flexbox-container-services">
         <div class="row">
-            <div class="hidden">
+            <div class="hide">
                 <center><img class="banner-icon" src="/icon/code-1.svg" /></center>
                 <center><h2>What gets done.</h2></center>
                 <br />
@@ -31,26 +31,54 @@
                 were thrilled! As you can imagine, so were they.
                 </p>
                 <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%;">Their solution incorporated a web development project, a stock reservation system integration with QuickBooks Enterprise, and a suite of custom utilities to aid the warehouse staff in processing the incoming orders.  With a little creativity and our know how almost anything is possible.</p>
-                <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%;">>I would like to invite you to fill out our contact form so we can collaborate on the best way to move the needle for your company.</p>
+                <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%;">I would like to invite you to fill out our contact form so we can collaborate on the best way to move the needle for your company.</p>
                 <p></p>
             </div>
         </div>
         <div class="row button-row">
-            <button type="button" class="button-action-call-center" onclick="location.href='@Url.Action("Contact", "Home")'" />Connect / Get Started</button>
+            <button type="button" class="button-action-call-center" onclick="location.href='@Url.Action("Contact", "Home")'" />Make Contact</button>
         </div>
         <div class="row">
-            <div class="hidden">
-            <center><h2>How we do it. - The Roadmap to Success</h2></center>
-            <br />
-                <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%;">Consistently magnificent results do not come through chance.  That is why we have distilled complex design methodologies into a simplified process that can be scaled according to our client’s needs.  Here is a summary of how we keep it simple while doing it right.</p>
-                <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%;">First, we determine where we are going. This is done by thoroughly eliciting, analyzing, and documenting the opportunities that will be addressed.  The goal here is to compose a problem and mission statement which will be used as a weigh point on our map to success.</p>
-                <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%;">The next order of business is to define the project requirements.  This is an iterative discovery process where we nail down what your solution will be able to do.  It is important that we understand your company’s mission, direction, and target market to make sure that the solution fits your company’s trajectory. The requirements and constraints will then be placed into a Software Requirements Specification (SRS) document.  Like the problem and mission statement, this document will be referred to by our teams through the design, implementation, and testing phases to ensure that we have a final product that meets or exceeds your goals.</p>
-                <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%;">The SRS gives us a starting point that we can use to understand the scope of your project. Once it is in place, we will present you with a project plan containing an estimate, schedule, resource allocations, risk analysis and the rules governing the project.</>
-                <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%;">Does this sound like a lot?   Don’t worry as we will do the heavy lifting.  If software design projects are just allowed to " happen" the result is chaos. We manage every detail of your plan passionately and this is the essence of how we deliver consistent results. To get started and learn more, fill out the contact form. We are looking forward to hearing from you!</>
+            <div class="hide">
+
             </div>
         </div>
     </div>
 </section3>
+        <section class="flexbox-bottom-row">
+            <div class="container-lower">
+                <a href="/Home/CaseStudyMomPop?area=CaseStudyMomPop">
+                    <div class="showcase-box1">
+                        <center>
+                            <img class="showcase-image" src="/img/mom_pop.png" /><b><p>Case Study - Kiosk App</p></b>
+                        </center>
+                        <div class="showcase-inner-box">
+                            <p class="showcase-inner-paragraph">Touchscrean app development for Mom and Pop's Pizzeria</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.memoryspace.io" target="_blank">
+                    <div class="showcase-box2">
+                        <center>
+                            <img class="showcase-image" src="/img/sv.png" /><p><b>Case Study - ERP</b></p>
+                        </center>
+                        <div class="showcase-inner-box">
+                            <p class="showcase-inner-paragraph">Cloud enterprise resource planning customization</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="/Home/CaseStudyMagnadigi?area=CaseStudyMagnadigi">
+                    <div class="showcase-box3">
+                        <center>
+                            <img class="showcase-image" src="/img/md.png" /><p><b>Case Study - Web App</b></p>
+                        </center>
+                        <div class="showcase-inner-box">
+                            <p class="showcase-inner-paragraph">.NET web app front- and back-end design which is connected to ERPNEXT.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
 </header3>
     <section class="flexbox-contact-page-container">
         <div class="flexbox-container center">
@@ -61,35 +89,35 @@
                         <center><img src="/icon/device-message.svg" style="height:100px;justify-content:center;" /></center>
                         <center><h1>Contact</h1></center>
                         <div class="form-floating mb-3">
-                            <p><div asp-validation-summary="ModelOnly" class="alert-color hidden"></div></p>
+                            <p><div asp-validation-summary="ModelOnly" class="alert-color hide"></div></p>
                             <input asp-for="Name" id="Name" class="form-control" placeholder="First/Last Name" required />
                             <label asp-for="Name">Name</label>
-                            <span asp-validation-for="Name" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Name" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <input asp-for="Business" class="form-control" id="Business" placeholder="Company Name" required />
                             <label asp-for="Business"></label>
-                            <span asp-validation-for="Business" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Business" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
-                            <input asp-for="Phone" id="Phone" name="Phone" placeholder="(XXX) XXX-XXXX" class="form-control" required />
+                            <input asp-for="Phone" id="Phone" name="Phone" placeholder="(XXX) XXX-XXXX" class="form-control Phone" required />
                             <label asp-for="Phone"></label>
-                            <span asp-validation-for="Phone" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Phone" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <input asp-for="Email" id="Email" class="form-control" placeholder="example@somewhere.com" required />
                             <label asp-for="Email"></label>
-                            <span asp-validation-for="Email" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Email" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <textarea asp-for="Message" id="Message" class="form-control" style="height: 100px" placeholder="Message" required></textarea>
                             <label asp-for="Message"></label>
-                            <span asp-validation-for="Message" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Message" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
-                            <p><span asp-validation-for="startDate" class="alert-color"></span></p>
                             <input asp-for="startDate" class="form-control" id="startDate" />
                             <label asp-for="startDate"></label>
+                            <p style="margin:5px;"><span asp-validation-for="startDate" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-control" asp-for="priorityLevel" name="priorityLevel" id="priorityLevel">
@@ -98,7 +126,7 @@
                                 <option>Low</option>
                             </select>
                             <label asp-for="priorityLevel"></label>
-                            <p><span asp-validation-for="priorityLevel" class="alert-color"></span></p>
+                            <p style="margin:5px;"><p><span asp-validation-for="priorityLevel" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <center><button type="submit" class="form-button">Send</button></center>

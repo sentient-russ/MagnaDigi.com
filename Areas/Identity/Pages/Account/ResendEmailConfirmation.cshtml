@@ -14,10 +14,8 @@
 <div class="flexbox-container center">
     <div class="dialog-box-container">
         <form id="account" method="post" class="form-login">
-            <br />
             <center><img src="~/favicon.ico" height="125px" /></center>
-            <center><p><h2>@ViewData["Title"]</h2></p></center>
-            <br />
+            <center><h2 style="margin-top:0px;">@ViewData["Title"]</h2></center>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" id="Input.Email" aria-required="true" class="form-control" placeholder="Email" required/>
                 <label asp-for="Input.Email"></label>
@@ -30,7 +28,10 @@
                     <button type="submit" class="form-button">Resend</button>
                 </div>
             </div>
-            <br />
+            <div class="form-floating mb-3">
+                <p><a class="flexbox-item-text" id="Login" asp-page="./Login">Back to Login</a></p>
+                <p><a class="flexbox-item-text" id="Home" asp-page="./Home">Home</a></p>
+            </div>
         </form>
     </div>
 </div>

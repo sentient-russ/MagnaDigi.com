@@ -28,7 +28,6 @@ namespace magnadigi.Areas.Identity.Pages.Account
         private readonly UserManager<magnadigiUser> _userManager;
         private readonly IUserStore<magnadigiUser> _userStore;
         private readonly IUserEmailStore<magnadigiUser> _emailStore;
-        private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
 
         public ExternalLoginModel(
@@ -43,7 +42,7 @@ namespace magnadigi.Areas.Identity.Pages.Account
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _logger = logger;
-            _emailSender = emailSender;
+            EmailSender1 = emailSender;
         }
 
         /// <summary>
@@ -74,9 +73,9 @@ namespace magnadigi.Areas.Identity.Pages.Account
 
         public IEmailSender EmailSender => EmailSender1;
 
-        public IEmailSender EmailSender1 => _emailSender;
+        public IEmailSender EmailSender1 { get; }
 
-        public IEmailSender EmailSender2 => _emailSender;
+        public IEmailSender EmailSender2 => EmailSender1;
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

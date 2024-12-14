@@ -8,7 +8,6 @@ using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Text.RegularExpressions;
-using System.Configuration;
 using System;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
 
@@ -17,12 +16,9 @@ namespace magnadigi.Services
 
     public class TaskDAO
     {
-
-        /*        public string magnadigiConnectionString = "Server=162.205.232.100;User=remote;password=Rock#tow0909;database=magnadigi;port=3306;";
-                public string erpConnectionString = "Server=162.205.232.100;User=remote;password=Rock#tow0909;database=magnadigi;port=3306;";*/
         public string? connectionString;
         public TaskDAO(){
-            connectionString = Environment.GetEnvironmentVariable("MariaDbConnectionStringRemote");
+            connectionString = Environment.GetEnvironmentVariable("DbConnectionString");
         }
 
         /*
@@ -37,8 +33,7 @@ namespace magnadigi.Services
               
             MySqlConnection conn1 = new MySqlConnection(connectionString);
             conn1.Open();
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM erp.tabTask WHERE _assign LIKE @UserName", conn1);
-            //MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM erp.tabToDo INNER JOIN erp.tabTask ON erp.tabToDo.reference_name=erp.tabTask.name WHERE allocated_to=@Username", conn1);
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM md.tabTask WHERE _assign LIKE @UserName", conn1);
             cmd1.Parameters.AddWithValue("@UserName", "%" + userIdIn + "%");
             MySqlDataReader reader1 = cmd1.ExecuteReader();
 
@@ -89,7 +84,7 @@ namespace magnadigi.Services
 
             MySqlConnection conn1 = new MySqlConnection(connectionString);
             conn1.Open();
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM erp.tabTask WHERE _assign LIKE @UserName", conn1);
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM md.tabTask WHERE _assign LIKE @UserName", conn1);
             cmd1.Parameters.AddWithValue("@UserName", "%" + userIdIn + "%");
             MySqlDataReader reader1 = cmd1.ExecuteReader();
 
@@ -141,7 +136,7 @@ namespace magnadigi.Services
                     Console.WriteLine("Connecting to MySQL...");
                     conn3.Open();
 
-                    string sql3 = "SELECT description FROM erp.tabTask WHERE name=@TaskRef";
+                    string sql3 = "SELECT description FROM md.tabTask WHERE name=@TaskRef";
                     MySqlCommand cmd3 = new MySqlCommand(sql3, conn3);
                     cmd3.Parameters.AddWithValue("@TaskRef", taskRefIn);
 
@@ -175,7 +170,7 @@ namespace magnadigi.Services
 
                 MySqlConnection conn4 = new MySqlConnection(connectionString);
                 conn4.Open();
-                MySqlCommand cmd4 = new MySqlCommand("SELECT * FROM erp.tabTask WHERE name=@TaskId", conn4);
+                MySqlCommand cmd4 = new MySqlCommand("SELECT * FROM md.tabTask WHERE name=@TaskId", conn4);
                 cmd4.Parameters.AddWithValue("@TaskId", taskRefIn);
                 MySqlDataReader rdr4 = cmd4.ExecuteReader();
 
@@ -213,7 +208,7 @@ namespace magnadigi.Services
                     Console.WriteLine("Connecting to MySQL...");
                     conn2.Open();
 
-                    string sql = "UPDATE erp.tabTask SET description=@Details, modified=@TodayDate, modified_by=@Email, status=@Status, completed_on=@CompletedOn WHERE name=@TaskRef";
+                    string sql = "UPDATE md.tabTask SET description=@Details, modified=@TodayDate, modified_by=@Email, status=@Status, completed_on=@CompletedOn WHERE name=@TaskRef";
 
                     MySqlCommand cmd2 = new MySqlCommand(sql, conn2);
                     cmd2.Parameters.AddWithValue("@TodayDate", dateErp);

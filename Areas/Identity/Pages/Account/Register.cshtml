@@ -2,7 +2,6 @@
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
-    
 }
 <div class="content-block-center">
     <br />
@@ -11,10 +10,9 @@
 </div>
 <div class="flexbox-container center">
     <div class="dialog-box-container">
-        <form id="account" method="post" class="form-login ">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-login">
             <center><img src="~/favicon.ico" height="125px" /></center>
-            <center><p><h2>@ViewData["Title"]</h2></p></center>
-            <br />
+            <center><h2 style="margin-top:0px;">@ViewData["Title"]</h2></center>
             <div class="form-floating mb-3">
                 <input asp-for="Input.FirstName" id="Input.FirstName" class="form-control" autocomplete="username" aria-required="true" placeholder="FirstName" required/> 
                 <label asp-for="Input.FirstName"></label>
@@ -37,14 +35,15 @@
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.PhoneNumber" id="Input.PhoneNumber" class="form-control" autocomplete="username" aria-required="true" placeholder="PhoneNumber" required />
+                <input asp-for="Input.PhoneNumber" id="Input.PhoneNumber" name="Input.PhoneNumber" class="form-control" aria-required="true" placeholder="Input.PhoneNumber" required />
                 <label asp-for="Input.PhoneNumber"></label>
                 <div class="flexbox-container-alert">
                     <span asp-validation-for="Input.PhoneNumber" class="alert-color"></span>
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Email" id="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Email" required />
+                @*<input asp-for="Input.Email" class="form-input-control" autocomplete="username" aria-required="true" />*@
+                <input asp-for="Input.Email" id="Input.Email" class="form-control" autocomplete="email" aria-required="true" placeholder="Email" required />
                 <label asp-for="Input.Email"></label>
                 <div class="flexbox-container-alert">
                     <span asp-validation-for="Input.Email" class="alert-color"></span>
@@ -65,14 +64,16 @@
                     <span asp-validation-for="Input.ConfirmPassword" class="alert-color"></span>
                 </div>
             </div>
-            </br>
             <div class="form-floating mb-3">
                 <div class="form-button-container">
                 <div asp-validation-summary="ModelOnly" class="alert-color"></div>
                     <button id="registerSubmit" class="form-button" type="submit">Register</button>
                 </div>
-            </div>   
-            </br>
+            </div>
+            <div class="form-floating mb-3">
+                <p><a class="flexbox-item-text" id="Login" asp-page="./Login">Back to Login</a></p>
+                <p><a class="flexbox-item-text" id="Home" asp-page="./Home">Home</a></p>
+            </div>
         </form>
     </div>
 </div>
@@ -86,7 +87,6 @@
 <br />
 <br />
 <br />
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

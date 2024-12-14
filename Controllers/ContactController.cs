@@ -30,7 +30,7 @@ namespace magnadigi.Controllers
         public string? Business { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 6)]
+        [StringLength(14, MinimumLength = 10)]
         [DisplayName("Phone Number:")]
         [BindProperty(SupportsGet = true, Name = "Phone")]
         public string? Phone { get; set; }

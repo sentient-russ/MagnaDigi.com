@@ -1,0 +1,214 @@
+﻿@model magnadigi.Controllers.ContactController
+@{
+    ViewData["Title"] = "magnadigi.com";
+}
+@*Place this GoogleAnalyticsScript on any non sensative, external page that requires analytics only!*@
+@section GoogleAnalyticsScript{
+    <!-- Google tag (gtag.js) which is only loaded outside of customer portal-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX92D67Z8T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-WX92D67Z8T');
+    </script>
+}
+    <div class="vert-bar-wrapper">
+        <div class="case-study-imagae-container">
+            <section4>
+                <div class="flexbox-container-case-study2">
+                    <span class="case-study-row">
+                        <div class="case-study-icon-box">
+                            <p class="case-study-icon-text">Case Study</p>
+                        </div>
+                        <div class="case-study-textbox">
+                            <p class="case-study-heading3">&nbsp - Magnadigi.com</p>
+                        </div>
+                    </span>
+                    <div class="author-bar">
+                        <p class="author-bar-text">Author: Russell Steele</p>
+                        <p class="author-bar-text">Published: May 2nd, 2023</p>
+                        <p class="author-bar-text">Read Time: 3 min.</p>
+                    </div>
+                    <div class="case-study-image-container">
+                        <center><img src="/img/case-study/magnadigi-layout.png" class="case-study-image" /></center>
+                    </div>
+                    <p class="case-study-heading2" style="margin-bottom:-50px;">Project Summery</p>
+                    <p class="case-study-text">At Magnadigi it was apparent that we needed a website to illustrate our ability to create impressive applications 
+                        that drive sales and support business functions. While that was true, the primary goal of this website is not to attract business but rather to meet our expectation 
+                        of providing the highest quality technology services possible. Magnadigi values being a success provider above all else. By investing in our operational
+                        systems, we are laying the groundwork necessary to repeat success, over and again, one client at a time. Lastly, we recognized that the role project management
+                        plays in the develpment of results producing software is tremendously important. It was therefore crucial to create a design that fosters stakeholder buy-in, 
+                        and thus involvement in the design process.
+                    </p>
+                    <p class="case-study-text"> 
+                        With these key factors in mind, here is a sample illustrating some of the requirements that were used when 
+                        planning this development project.
+                    </p>
+                    <p class="case-study-text">
+                        <ol type="1">
+                            <li class="case-study-text-numbered-list">
+                                The website’s back-end must sync in real time with a client facing portal to provide project information.
+                            </li>
+                            <li class="case-study-text-numbered-list">
+                                The portal must display each stakeholder’s unique task list with the ability to update notes and a task status field.
+                            </li>
+                            <li class="case-study-text-numbered-list">
+                                The portal must contain dynamically fed Gantt charts illustrating task dependencies and timelines.
+                            </li>
+                            <li class="case-study-text-numbered-list">
+                                The portal must contain a secure file management area with upload, download, and deletion capabilities for sharing pertinent documents with the development team.
+                            </li>
+                            <li class="case-study-text-numbered-list">
+                                The portal must have a stakeholder profile update section that allows them to update their contact phone number and email address.
+                            </li>
+                            <li class="case-study-text-numbered-list">
+                                The portal must have a document download section where various forms and artifacts can be shared according to the stakeholder’s authorization level.
+                            </li>
+                            <li class="case-study-text-numbered-list">
+                                The ERP system must be updated in python to allow for the administration of various authorization levels.
+                            </li>
+                            <li class="case-study-text-numbered-list">
+                                There must be three authorization levels that include Magnadigi Employee Auth, Owner-Manager Auth, and General Stakeholder Auth.
+                            </li>
+                        </ol>
+
+                    </p>
+                    <p class="case-study-text">In addition to the above-listed functional requirements it was also imperative that the site had a business-oriented 
+                        polished design that promotes simplicity while being capable of handling up to 25 concurrent user sessions without noticeable lag. 
+                        The current business trajectory dictates that the application must have the ability to be containerized behind a load balancer to scale on demand.</p>
+                    <p class="case-study-heading2" style="margin-bottom:-50px;">Artifacts</p>
+                    <p class="case-study-text">If you would like to take the resulting portal for a test drive, you may use the following login.</p>
+                    <div class="center-fit">
+                        <p><span class="case-study-text">Username:</span></p>
+                        <p><span class="login-info-formatting">demo@magnadigi.com&nbsp</span></p>
+                        <p><span class="case-study-text">Password:</span></p>
+                        <p><span class="login-info-formatting">>Success1@Magnadigi</span></p>
+                        <button type="button" class="button-login-center" style="margin-left:auto;margin-right:auto;" onclick="location.href='/Identity/Account/Login'" />Login</button>
+                    <br />
+                    <br />
+                    <br />
+                    </div>
+                </div>
+            </section4>
+        </div>
+        <section5 class="flexbox-contact-dialog-container">
+            <div class="flexbox-container center">
+                <div class="dialog-box-container">
+                    @*Start new form here.*@
+                    <div class="flexbox-container">
+                        <form method="post" action="/Contact" enctype="multipart/form-data">
+                            <center><img src="/icon/device-message.svg" style="height:100px;justify-content:center;" /></center>
+                            <center><h1>Contact</h1></center>
+                            <div class="form-floating mb-3">
+                                <p><div asp-validation-summary="ModelOnly" class="alert-color hidden"></div></p>
+                                <input asp-for="Name" id="Name" class="form-control" placeholder="First/Last Name" required />
+                                <label asp-for="Name">Name</label>
+                                <p style="margin:10px;"><span asp-validation-for="Name" class="alert-color"></span></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Business" class="form-control" id="Business" placeholder="Company Name" required />
+                                <label asp-for="Business"></label>
+                                <p style="margin:5px;"><span asp-validation-for="Business" class="alert-color"></span></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Phone" id="Phone" name="Phone" placeholder="(XXX) XXX-XXXX" class="form-control" required />
+                                <label asp-for="Phone"></label>
+                                <p style="margin:5px;"><span asp-validation-for="Phone" class="alert-color"></span></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Email" id="Email" class="form-control" placeholder="example@somewhere.com" required />
+                                <label asp-for="Email"></label>
+                                <p style="margin:5px;"><span asp-validation-for="Email" class="alert-color"></span></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea asp-for="Message" id="Message" class="form-control" style="height: 100px" placeholder="Message" required></textarea>
+                                <label asp-for="Message"></label>
+                                <p style="margin:5px;"><span asp-validation-for="Message" class="alert-color"></span></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="startDate" class="form-control" id="startDate" />
+                                <label asp-for="startDate"></label>
+                                <p style="margin:5px;"><span asp-validation-for="startDate" class="alert-color"></span></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-control" asp-for="priorityLevel" name="priorityLevel" id="priorityLevel">
+                                    <option>High</option>
+                                    <option>Medium</option>
+                                    <option>Low</option>
+                                </select>
+                                <label asp-for="priorityLevel"></label>
+                                <p style="margin:5px;"><p><span asp-validation-for="priorityLevel" class="alert-color"></span></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <center><button type="submit" class="form-button">Send</button></center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section5>
+        <br /><br /><br /><br /><br /><br /><br />
+        <section5 class="flexbox-bottom-row-case-study">
+            <p id="magnadigi-text" class="magnadigi-text">magnadigi</p>
+            <div class="container-lower">
+            <a href="/Home/CaseStudyMomPop?area=CaseStudyMomPop">
+                <div class="showcase-box1">
+                    <center>
+                        <img class="showcase-image" src="/img/mom_pop.png" /><b><p>Case Study - Kiosk App</p></b>
+                    </center>
+                    <div class="showcase-inner-box">
+                        <p class="showcase-inner-paragraph">Touchscrean app development for Mom and Pop's Pizzeria</p>
+                    </div>
+                </div>
+            </a>
+            <a href="/Home/CaseStudyGroupConscience?area=CaseStudyGroupConscience">
+                <div class="showcase-box2">
+                    <center>
+                        <img class="showcase-image" src="/img/gcai.png" /><p><b>Giving Back - AI</b></p>
+                    </center>
+                    <div class="showcase-inner-box">
+                        <p class="showcase-inner-paragraph">Link to our social contribution which utilizes retrieval augmented generation (RAG) with our fine-tuned large language model (LLM). </p>
+                    </div>
+                </div>
+            </a>
+            <a href="/Home/CaseStudyMagnadigi?area=CaseStudyMagnaDigi">
+                <div class="showcase-box3">
+                    <center>
+                        <img class="showcase-image" src="/img/md.png" /><p><b>Case Study - Web App</b></p>
+                    </center>
+                    <div class="showcase-inner-box">
+                        <p class="showcase-inner-paragraph">.NET web app front- and back-end design which is connected to ERPNEXT.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="/Home/CaseStudyOnAccount?area=CaseStudyOnAccount">
+                <div class="showcase-box3">
+                    <center>
+                        <img class="showcase-image" src="/img/oa.png" /><p><b>Case Study - On-Account</b></p>
+                    </center>
+                    <div class="showcase-inner-box">
+                        <p class="showcase-inner-paragraph">Custom double entry accrual based accounting application.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="/Home/CaseStudyDisasterAversion?area=CaseStudyDisasterAversion">
+                <div class="showcase-box3">
+                    <center>
+                        <img class="showcase-image" src="/img/da.png" /><p><b>Case Study - Site Monitoring</b></p>
+                    </center>
+                    <div class="showcase-inner-box">
+                        <p class="showcase-inner-paragraph">Remote site monitoring and notification application.</p>
+                    </div>
+                </div>
+            </a>
+            </div>
+        </section5>
+    </div>
+
+    @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+

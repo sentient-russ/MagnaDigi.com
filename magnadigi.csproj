@@ -42,10 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="magnadigi.com.pfx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.2.3" />
     <PackageReference Include="ByteDev.FormUrlEncoded" Version="1.0.0" />
     <PackageReference Include="MailKit" Version="4.0.0" />
@@ -74,6 +70,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\ClientFiles\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -112,10 +109,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\img\hero_background.png">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <None Update="digitalmagnificence.com.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="magnadigi.com.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

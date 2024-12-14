@@ -9,7 +9,7 @@ public class UsersDAO{
     public string? connectionString;
     public UsersDAO()
     {
-        connectionString = Environment.GetEnvironmentVariable("MariaDbConnectionStringRemote");
+        connectionString = Environment.GetEnvironmentVariable("DbConnectionString");
     }
     public UserModel getUser(UserModel userIn)
     {

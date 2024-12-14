@@ -57,8 +57,8 @@ namespace magnadigi.Models
         public string? Status { get; set; }
         public string? PriorStatus { get; set; }
         public DateTime? CompletedOn { get; set; }
-        public string Progress { get; set; } 
-        public string DetailsString { get; set; }
+        public string? Progress { get; set; } 
+        public string? DetailsString { get; set; }
 
 
     }

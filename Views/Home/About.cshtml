@@ -1,5 +1,4 @@
 ﻿@model magnadigi.Controllers.ContactController
-
 @{
     ViewData["Title"] = "Mission - magnadigi";
 }
@@ -21,7 +20,9 @@
         <div class="hidden">
             <center><img class="banner-icon" src="/icon/trend-up.svg" /></center>
             <br /><br />
-            <center><img src="~/img/founder.png" height="250px" /></center>
+            <div class="founder-container">
+                <img src="~/img/founder.png" class="founder-image" />
+            </div>
             <center><h2>About the founder.</h2></center>
                         <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%";>
                 Born into this world in awe of all things mechanical, our founder has continuously torn into everything from clocks to circuits in search of the magic that makes things work.
@@ -29,15 +30,10 @@
             </p>
                         <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%">
                 In addition to tinkering, Russell established magnadigi to reach business owners who can benefit from his years of experience in management coupled with a knack for all things digital.
-                In fact, it is in this spirit that he enrolled and completed an AS in Computer Science from Georgia State University.  He is currently a Jr. at Kennesaw State working to complete
+                In fact, it is in this spirit that he enrolled and completed an AS in Computer Science from Georgia State University.  He is currently a Sr. at Kennesaw State working to complete
                 a BA in Software Engineering.
-            </p>
-                        <p style="text-align: justify; margin-left:auto; margin-right:auto; max-width: 100%">
-                He beleives one can't experience the thrill of success without a challenge.  It's in the daily grind; that is where the magic happens.  This is why every day is a new and exciting opportunity to go further than one thinks possible, and stand in a place of awe and wonder in the end.    
-            </p>
-                        
+            </p>                       
         </div>
-        
     </div>
     </div>
 </section3>
@@ -54,32 +50,32 @@
                             <p><div asp-validation-summary="ModelOnly" class="alert-color hidden"></div></p>
                             <input asp-for="Name" id="Name" class="form-control" placeholder="First/Last Name" required />
                             <label asp-for="Name">Name</label>
-                            <span asp-validation-for="Name" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Name" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <input asp-for="Business" class="form-control" id="Business" placeholder="Company Name" required />
                             <label asp-for="Business"></label>
-                            <span asp-validation-for="Business" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Business" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <input asp-for="Phone" id="Phone" name="Phone" placeholder="(XXX) XXX-XXXX" class="form-control" required />
                             <label asp-for="Phone"></label>
-                            <span asp-validation-for="Phone" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Phone" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <input asp-for="Email" id="Email" class="form-control" placeholder="example@somewhere.com" required />
                             <label asp-for="Email"></label>
-                            <span asp-validation-for="Email" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Email" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <textarea asp-for="Message" id="Message" class="form-control" style="height: 100px" placeholder="Message" required></textarea>
                             <label asp-for="Message"></label>
-                            <span asp-validation-for="Message" class="alert-color"></span>
+                            <p style="margin:5px;"><span asp-validation-for="Message" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
-                            <p><span asp-validation-for="startDate" class="alert-color"></span></p>
                             <input asp-for="startDate" class="form-control" id="startDate" />
                             <label asp-for="startDate"></label>
+                            <p style="margin:5px;"><span asp-validation-for="startDate" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-control" asp-for="priorityLevel" name="priorityLevel" id="priorityLevel">
@@ -88,7 +84,7 @@
                                 <option>Low</option>
                             </select>
                             <label asp-for="priorityLevel"></label>
-                            <p><span asp-validation-for="priorityLevel" class="alert-color"></span></p>
+                            <p style="margin:5px;"><p><span asp-validation-for="priorityLevel" class="alert-color"></span></p>
                         </div>
                         <div class="form-floating mb-3">
                             <center><button type="submit" class="form-button">Send</button></center>

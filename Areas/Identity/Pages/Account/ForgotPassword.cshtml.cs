@@ -69,7 +69,7 @@ namespace magnadigi.Areas.Identity.Pages.Account
                     "/Account/ResetPassword",
                     pageHandler: null,
                     values: new { area = "Identity", code },
-                    protocol: Request.Scheme);
+                    protocol: "Https");
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
