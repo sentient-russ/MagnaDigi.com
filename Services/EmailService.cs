@@ -2,13 +2,15 @@
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
-
+using System.Diagnostics;
 
 namespace magnadigi.Services
 {
     public class EmailService
     {
-        private string MD_Email_Pass = Environment.GetEnvironmentVariable("MD_Email_Pass");
+        private string? emailPass = Environment.GetEnvironmentVariable("MD_Email_Pass");
+        private string? emailAddress = Environment.GetEnvironmentVariable("MD_Email_Address");
+        private string? emailServer = Environment.GetEnvironmentVariable("MD_Email_Server");
         public String SendContactMessage(ContactDataModel complexDataIn)
         {
             var email = new MimeMessage();
@@ -26,10 +28,11 @@ namespace magnadigi.Services
               "<p><strong>Project Start Date: </strong>" + complexDataIn.startDate + "</p>"
             };
             using var smtp = new SmtpClient();
-            smtp.Connect("us2.smtp.mailhostbox.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("cs@magnadigi.com", MD_Email_Pass);
+            smtp.Connect(emailServer, 465, SecureSocketOptions.Auto);
+            smtp.Authenticate(emailAddress, emailPass);
             var response = smtp.Send(email);
             smtp.Disconnect(true);
+            Debug.WriteLine($"Email sent to: {email.To}, Subject: {email.Subject}, Body: {email.Body}");
             return response;
         }
     }

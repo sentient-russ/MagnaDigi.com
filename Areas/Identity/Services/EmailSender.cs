@@ -1,44 +1,44 @@
-﻿using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.Extensions.Options;
-using MailKit.Security;
+﻿using MailKit.Security;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using MimeKit;
 using MailKit.Net.Smtp;
-using Microsoft.Extensions.Logging;
-namespace WebPWrecover.Services;
-public class EmailSender : IEmailSender
+using System.Diagnostics;
+
+
+namespace magnadigi.Areas.Identity.Services;
+public class EmailService : IEmailSender
 {
-    private readonly ILogger _logger;
-    private string GC_Email_Pass = Environment.GetEnvironmentVariable("GC_Email_Pass");
-    public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
-                       ILogger<EmailSender> logger)
+    private string emailPass;
+    private string emailServer;
+    private string emailAddress;
+
+    public EmailService(IConfiguration configuration)
     {
-        Options = optionsAccessor.Value;
-        _logger = logger;
+        emailPass = Environment.GetEnvironmentVariable("MD_Email_Pass");
+        emailAddress = Environment.GetEnvironmentVariable("MD_Email_Address");
+        emailServer = Environment.GetEnvironmentVariable("MD_Email_Server");
     }
-    public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
+
     public async Task SendEmailAsync(string toEmail, string subject, string message)
     {
         await Execute(subject, message, toEmail);
     }
-    //updated to smtp from sendgrid 4/24/2023
     public async Task Execute(string subject, string message, string toEmail)
     {
         var email = new MimeMessage();
-        email.From.Add(MailboxAddress.Parse("cs@magnadigi.com"));
+        email.From.Add(MailboxAddress.Parse(emailAddress));
         email.To.Add(MailboxAddress.Parse(toEmail));
         email.Subject = subject;
         email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
         {
             Text = message
         };
+        
         using var smtp = new SmtpClient();
-        smtp.Connect("us2.smtp.mailhostbox.com", 587, SecureSocketOptions.StartTls);
-        smtp.Authenticate("cs@magnadigi.com", GC_Email_Pass);
+        smtp.Connect(emailServer, 465, SecureSocketOptions.Auto);
+        smtp.Authenticate(emailAddress, emailPass);
         var response = smtp.Send(email);
+        Debug.WriteLine($"Email sent to: {toEmail}, Subject: {subject}, Body: {message}");
         smtp.Disconnect(true);
-        _logger.LogInformation("The message smtp send to " + toEmail + "was attempted and returned a status of: " + response);
     }
 }
-
-
-

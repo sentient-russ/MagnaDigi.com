@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity;
 using WebPWrecover.Services;
 using magnadigi.Data;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.AspNetCore.Builder;
+using magnadigi.Areas.Identity.Services;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,21 +42,46 @@ builder.WebHost.ConfigureKestrel((context, serverOptions) =>
 
 var environ = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 var connectionString = "";
-var MD_Email_Pass = "";
+var emailPass = "    ";  //spaces necesary for the following Substring method call
+var emailAddress = "";
+var emailServer = "";
 if (environ == "Production")
 {
-    //pulls connection string from environment variables
+    //pulls connection string from environment variables. Local uses 127.0.0.1 interface.
     connectionString = Environment.GetEnvironmentVariable("MariaDbConnectionStringLocal");
-    MD_Email_Pass = Environment.GetEnvironmentVariable(MD_Email_Pass);
+    emailPass = Environment.GetEnvironmentVariable("MD_Email_Pass");
+    emailAddress = Environment.GetEnvironmentVariable("MD_Email_Address");
+    emailPass = Environment.GetEnvironmentVariable("MD_Email_Server");
+    Debug.WriteLine($"Received eng var sending pass: {emailPass?.Substring(0,3)}...");
+    Debug.WriteLine($"Received env var sending email address: {emailAddress}");
+    Debug.WriteLine($"Received env var sending server: {emailServer}");
+    if (connectionString == "")
+    {
+        throw new Exception("ProgramCS: The connection string was null!");
+    }
 }
 else
 {
-    //pulls connection string from development local version of secrets.json
+    //pulls connection string from secrets.json which uses the 162.205.xxx.xxx external interface.
     connectionString = builder.Configuration.GetConnectionString("MariaDbConnectionStringRemote");
-    MD_Email_Pass = builder.Configuration.GetConnectionString("GC_Email_Pass");
+    emailPass = builder.Configuration.GetConnectionString("MD_Email_Pass");
+    emailAddress = builder.Configuration.GetConnectionString("MD_Email_Address");
+    emailServer = builder.Configuration.GetConnectionString("MD_Email_Server");
+
+    Environment.SetEnvironmentVariable("MD_Email_Pass", emailPass);
+    Environment.SetEnvironmentVariable("MD_Email_Address", emailAddress); 
+    Environment.SetEnvironmentVariable("MD_Email_Server", emailServer);
+    Environment.SetEnvironmentVariable("DbConnectionString", connectionString);
+
+
+
+    Debug.WriteLine($"Received eng var sending pass: {emailPass?.Substring(0, 3)}...");
+    Debug.WriteLine($"Received env var sending email address: {emailAddress}");
+    Debug.WriteLine($"Received env var sending server: {emailServer}");
+    Debug.WriteLine($"Received env var DbConnectionString: {connectionString}");
 }
-Environment.SetEnvironmentVariable("DbConnectionString", connectionString);//this is used in services to access the string
-Environment.SetEnvironmentVariable("MD_Email_Pass", MD_Email_Pass);
+
+
 
 //adds the MySQL dbcontext
 builder.Services.AddDbContext<magnadigi.Data.magnadigiContext>(options => options.UseMySql(connectionString, new MySqlServerVersion(new Version(10, 6, 11)), options => options.EnableRetryOnFailure()));
@@ -64,7 +89,7 @@ builder.Services.AddDbContext<magnadigi.Data.magnadigiContext>(options => option
 //requires users to sign in
 builder.Services.AddDefaultIdentity<magnadigiUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<magnadigiContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddTransient<IEmailSender, EmailService>(); 
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 //builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAuthorization();
